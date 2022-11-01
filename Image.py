@@ -2,14 +2,13 @@ import sys
 import cv2 as cv
 import numpy as np
 
-
 class Image:
     def saveImage(self):
         cv.samples.addSamplesDataSearchPath("C:\\Users\\clazkani\\Anaconda3\\pkgs\\openjpeg-2.4.0-h4fc8c34_0")
         global image
-        image = cv.imread(cv.samples.findFile("messi-ronaldo.jpg"))
+        #image = cv.imread(cv.samples.findFile("messi-ronaldo.jpg"))
         #image = cv.imread(cv.samples.findFile("alg.jpg"))
-        b = image[:,:,0]
+        image = cv.imread(cv.samples.findFile("ball.jpg"))
         Image.twoFace(self)
         Image.accessPixel(self)
         Image.cropImage(self)
@@ -21,10 +20,12 @@ class Image:
         #image[196:324, 46:321] = face
 
         """For Messi Ronaldo Photo"""
-        face = image[19:244, 213:392]
-        image[39:264, 780:959] = face
+        #face = image[19:244, 213:392]
+        #image[39:264, 780:959] = face
 
-
+        """ball Photo"""
+        ball = image[254:415, 200:355]
+        image[61:222, 200:355] = ball
 
     def cropImage(self):
         roi = cv.selectROI(image)
